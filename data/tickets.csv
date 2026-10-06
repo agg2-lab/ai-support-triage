@@ -1,0 +1,21 @@
+ticket_id,subject,description,plan,category,priority,status,needs_human
+1,Export stuck at 99%,My video export has been stuck at 99% for twenty minutes.,Pro,Export & Rendering,Medium,Open,0
+2,Charged twice this month,I see two subscription charges on my card.,Standard,Billing,High,Open,1
+3,Cannot sign in,Password reset worked but I still cannot access my account.,Free,Account & Login,High,Open,1
+4,Editor feels slow,The workspace freezes when I move between clips.,Pro,Performance,Low,Open,0
+5,Download button not working,Clicking download gives me an error.,Standard,Bug Report,Medium,Open,0
+6,Where are captions?,How do I add captions to a project?,Free,Feature Question,Low,Resolved,0
+7,Unauthorized account access,I think someone else signed into my account.,Unlimited,Account Security,High,Open,1
+8,Render failed,My export failed after processing for several minutes.,Pro,Export & Rendering,Medium,Open,0
+9,Refund request,I meant to cancel before renewal and would like a refund.,Standard,Billing,Medium,Open,1
+10,Project crashes browser,Opening one project repeatedly crashes the browser tab.,Unlimited,Bug Report,Medium,Open,0
+11,Forgot password,I cannot remember my password.,Free,Account & Login,Low,Resolved,0
+12,Very slow generation,Generation is taking much longer than usual today.,Pro,Performance,Low,Open,0
+13,Can I change aspect ratio?,Where can I change the aspect ratio?,Free,Feature Question,Low,Resolved,0
+14,Export never finishes,The render spinner keeps going and never finishes.,Unlimited,Export & Rendering,Medium,Open,0
+15,Invoice needed,Can you send an invoice for my subscription?,Pro,Billing,Medium,Open,1
+16,Error opening project,I get an error every time I open one saved project.,Standard,Bug Report,Medium,Open,0
+17,Sign-in loop,The login page keeps sending me back to sign in.,Free,Account & Login,Low,Open,0
+18,Timeline lag,The timeline is very laggy on a larger project.,Pro,Performance,Low,Open,0
+19,How do I duplicate a project?,I want to make a copy before editing.,Free,Feature Question,Low,Resolved,0
+20,Video export error,Export fails with an error message.,Standard,Export & Rendering,Medium,Open,0
