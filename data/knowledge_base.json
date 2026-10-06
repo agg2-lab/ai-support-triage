@@ -12,6 +12,12 @@
     "resolution": "Confirm the email address, retry sign-in, and use the password-reset flow if needed."
   },
   {
+    "title": "Duo Mobile authentication issue",
+    "category": "MFA / Duo Mobile",
+    "keywords": ["duo", "duo mobile", "duo push", "mfa", "2fa", "new phone", "lost phone", "verification code", "activation link", "locked out"],
+    "resolution": "Confirm the user can access their enrolled device and retry the authentication flow. If the user lost or replaced the device, cannot receive Duo pushes, has an expired enrollment link, or remains locked out, escalate to an authorized support agent for account-specific MFA recovery."
+  },
+  {
     "title": "Subscription charge questions",
     "category": "Billing",
     "keywords": ["charged", "charge", "refund", "billing", "subscription"],
