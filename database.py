@@ -31,6 +31,18 @@ def init_db():
             )
             """
         )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS feedback (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                ticket_id INTEGER NOT NULL UNIQUE,
+                helpful INTEGER NOT NULL,
+                notes TEXT,
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY(ticket_id) REFERENCES tickets(id)
+            )
+            """
+        )
 
 
 def ticket_count():
@@ -94,6 +106,21 @@ def add_ticket(ticket):
         return cursor.lastrowid
 
 
+def add_feedback(ticket_id: int, helpful: bool, notes: str = ""):
+    with get_connection() as conn:
+        conn.execute(
+            """
+            INSERT INTO feedback (ticket_id, helpful, notes)
+            VALUES (?, ?, ?)
+            ON CONFLICT(ticket_id) DO UPDATE SET
+                helpful = excluded.helpful,
+                notes = excluded.notes,
+                created_at = CURRENT_TIMESTAMP
+            """,
+            (ticket_id, int(helpful), notes.strip()),
+        )
+
+
 def load_tickets():
     with get_connection() as conn:
         return pd.read_sql_query(
@@ -101,6 +128,26 @@ def load_tickets():
             SELECT *
             FROM tickets
             ORDER BY datetime(created_at) DESC, id DESC
+            """,
+            conn,
+        )
+
+
+def load_feedback():
+    with get_connection() as conn:
+        return pd.read_sql_query(
+            """
+            SELECT
+                feedback.id,
+                feedback.ticket_id,
+                feedback.helpful,
+                feedback.notes,
+                feedback.created_at,
+                tickets.subject,
+                tickets.category
+            FROM feedback
+            JOIN tickets ON tickets.id = feedback.ticket_id
+            ORDER BY datetime(feedback.created_at) DESC, feedback.id DESC
             """,
             conn,
         )
