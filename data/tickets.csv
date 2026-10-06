@@ -19,3 +19,9 @@ ticket_id,subject,description,plan,category,priority,status,needs_human
 18,Timeline lag,The timeline is very laggy on a larger project.,Pro,Performance,Low,Open,0
 19,How do I duplicate a project?,I want to make a copy before editing.,Free,Feature Question,Low,Resolved,0
 20,Video export error,Export fails with an error message.,Standard,Export & Rendering,Medium,Open,0
+21,Duo push never arrives,I am trying to sign in but Duo Mobile never sends a push notification to my phone.,Pro,MFA / Duo Mobile,High,Open,1
+22,New phone needs Duo setup,I replaced my phone and cannot access the old Duo enrollment to sign in.,Standard,MFA / Duo Mobile,High,Open,1
+23,Duo verification code rejected,The verification code in Duo Mobile keeps getting rejected even though the app shows the account.,Free,MFA / Duo Mobile,Medium,Open,1
+24,Locked out after losing phone,I lost the phone that had Duo Mobile and now I am completely locked out of my account.,Unlimited,MFA / Duo Mobile,High,Open,1
+25,Duo activation link expired,My Duo activation link expired and I cannot finish enrolling my device.,Pro,MFA / Duo Mobile,Medium,Open,1
+26,Repeated MFA prompt,I successfully approve Duo but the sign-in page immediately asks me to authenticate again.,Standard,MFA / Duo Mobile,Medium,Open,1
