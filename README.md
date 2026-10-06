@@ -1,20 +1,24 @@
-# AI-Assisted Support Triage & Insights
+# Support Triage & Insights
 
-A small customer-support operations project built with Python, Streamlit, SQLite, and an optional OpenAI API integration.
+A portfolio-ready customer support operations project built with Python, Streamlit, SQLite, and an optional OpenAI API integration.
 
-The goal is to demonstrate a realistic support workflow rather than a fully autonomous chatbot. A support agent can submit a ticket, review its classification and escalation recommendation, see a relevant knowledge-base article, and view aggregate issue patterns in a dashboard.
+The project models a realistic support workflow rather than a fully autonomous chatbot. A support agent can submit a ticket, review its category and escalation recommendation, compare it with similar historical tickets, inspect a matching knowledge-base article, review a draft response, and rate whether the recommendation was useful.
 
 ## Features
 
 - Ticket intake with customer plan context
 - Rule-based ticket classification that works without external APIs
-- Optional model-assisted classification through the OpenAI Responses API
+- Optional OpenAI-assisted classification
 - Priority and human-escalation recommendations
+- Similar historical ticket retrieval using local text similarity
 - Knowledge-base matching
 - Draft support responses
-- SQLite ticket history
-- Dashboard for recurring issue categories, priorities, and escalation rate
+- Agent feedback: Helpful / Not Helpful + notes
+- SQLite ticket and feedback history
+- Filterable support dashboard
+- Feedback helpfulness metric
 - Synthetic seed data for demonstration
+- Render deployment configuration
 
 ## Tech stack
 
@@ -33,6 +37,8 @@ ai-support-triage/
 ├── classifier.py
 ├── database.py
 ├── knowledge_base.py
+├── similarity.py
+├── render.yaml
 ├── requirements.txt
 ├── .env.example
 ├── .gitignore
@@ -40,8 +46,10 @@ ai-support-triage/
 │   ├── tickets.csv
 │   └── knowledge_base.json
 └── tests/
+    ├── conftest.py
     ├── test_classifier.py
-    └── test_knowledge_base.py
+    ├── test_knowledge_base.py
+    └── test_similarity.py
 ```
 
 ## Run locally
@@ -92,28 +100,44 @@ Do not commit `.env` or an API key to GitHub.
 
 If either environment variable is missing, the project automatically falls back to the local classifier.
 
+## Similar-ticket retrieval
+
+The project uses a lightweight local text-similarity implementation to compare a new request against historical ticket subjects and descriptions. It intentionally avoids a heavy vector database for the MVP while still demonstrating retrieval and case reuse.
+
+## Agent feedback
+
+After a ticket is analyzed, an agent can mark the recommendation as **Helpful** or **Not helpful** and leave an optional note. The dashboard tracks the percentage of feedback marked helpful so recommendation quality can be measured rather than assumed.
+
 ## Run tests
 
 ```bash
 pytest
 ```
 
+## Deploy on Render
+
+The repository includes `render.yaml` for a simple web-service deployment.
+
+The app runs without an OpenAI API key. If you want model-assisted classification in a hosted demo, add `OPENAI_API_KEY` and `OPENAI_MODEL` as environment variables in the hosting platform rather than committing them to the repository.
+
+The demo currently uses a local SQLite database. On an ephemeral hosting instance, newly submitted tickets and feedback may reset when the service is rebuilt or restarted. The synthetic seed data will repopulate automatically.
+
 ## Portfolio talking points
 
-This project is intentionally scoped around support operations:
+This project demonstrates:
 
-- deciding what can be handled automatically vs. escalated to a person
-- identifying recurring ticket patterns
-- connecting tickets to self-service documentation
-- keeping AI recommendations reviewable rather than fully autonomous
+- support triage and escalation logic
+- retrieval of similar previously seen issues
+- self-service documentation matching
+- human-in-the-loop AI workflows
+- support analytics and recurring issue identification
+- feedback collection for measuring recommendation quality
 
-## Future improvements
+## Next improvements
 
 - semantic knowledge-base search with embeddings
-- ticket similarity scoring
-- response-quality evaluation
-- weekly trend comparisons
-- agent feedback buttons
-- issue clustering
-- Zendesk-style ticket import/export
-- authentication and role-based views
+- weekly category trend comparisons
+- classification evaluation dataset and precision/recall metrics
+- CSV import/export
+- screenshot/GIF demo in this README
+- public deployment link
