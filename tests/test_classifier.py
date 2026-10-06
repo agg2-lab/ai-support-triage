@@ -20,3 +20,24 @@ def test_export_ticket_classification():
 
     assert result["category"] == "Export & Rendering"
     assert result["priority"] == "Medium"
+
+
+def test_duo_lost_phone_escalates():
+    result = rule_based_classify(
+        "Locked out after losing phone",
+        "I lost the phone that had Duo Mobile and now I cannot access my account.",
+    )
+
+    assert result["category"] == "MFA / Duo Mobile"
+    assert result["priority"] == "High"
+    assert result["needs_human"] is True
+
+
+def test_duo_push_issue_escalates():
+    result = rule_based_classify(
+        "Duo push never arrives",
+        "Duo Mobile is not sending the push notification to my phone.",
+    )
+
+    assert result["category"] == "MFA / Duo Mobile"
+    assert result["needs_human"] is True
