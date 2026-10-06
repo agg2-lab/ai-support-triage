@@ -7,6 +7,7 @@ load_dotenv()
 
 CATEGORIES = [
     "Account & Login",
+    "MFA / Duo Mobile",
     "Billing",
     "Export & Rendering",
     "Performance",
@@ -21,6 +22,21 @@ def rule_based_classify(subject, description):
     text = f"{subject} {description}".lower()
 
     rules = [
+        (
+            "MFA / Duo Mobile",
+            [
+                "duo mobile",
+                "duo push",
+                "duo",
+                "mfa",
+                "multi-factor",
+                "multifactor",
+                "two-factor",
+                "2fa",
+                "verification code",
+                "authenticator",
+            ],
+        ),
         ("Account Security", ["hacked", "unauthorized", "security", "stolen account"]),
         ("Billing", ["charge", "charged", "refund", "invoice", "billing", "subscription"]),
         ("Account & Login", ["login", "log in", "password", "sign in", "account access"]),
@@ -42,6 +58,12 @@ def rule_based_classify(subject, description):
         "data loss",
         "charged twice",
         "cannot access",
+        "locked out",
+        "lost phone",
+        "new phone",
+        "push never arrives",
+        "cannot authenticate",
+        "can't authenticate",
     ]
     medium_terms = [
         "error",
@@ -50,6 +72,8 @@ def rule_based_classify(subject, description):
         "billing",
         "refund",
         "charged",
+        "verification code",
+        "duo push",
     ]
 
     if any(term in text for term in high_terms):
@@ -61,7 +85,7 @@ def rule_based_classify(subject, description):
 
     needs_human = (
         priority == "High"
-        or category in {"Billing", "Account Security"}
+        or category in {"Billing", "Account Security", "MFA / Duo Mobile"}
     )
 
     return {
@@ -102,7 +126,8 @@ needs_human: true or false
 reason: one short sentence
 
 Escalate billing disputes, account-security concerns, possible data loss,
-or issues requiring account-specific investigation.
+MFA/Duo Mobile issues that require device enrollment or account-specific
+authentication changes, or other issues requiring account-specific investigation.
 
 Subject: {subject}
 Description: {description}
