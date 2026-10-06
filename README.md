@@ -10,6 +10,7 @@ The project models a realistic support workflow rather than a fully autonomous c
 - Rule-based ticket classification that works without external APIs
 - Optional OpenAI-assisted classification
 - Priority and human-escalation recommendations
+- MFA / Duo Mobile escalation examples for account-access issues
 - Similar historical ticket retrieval using local text similarity
 - Knowledge-base matching
 - Draft support responses
@@ -28,6 +29,26 @@ The project models a realistic support workflow rather than a fully autonomous c
 - pandas
 - OpenAI API (optional)
 
+## Demo
+
+### Support Operations Dashboard
+
+![Support operations dashboard](docs/screenshots/dashboard-overview.png)
+
+The dashboard provides a high-level view of support activity, including total and open ticket volume, escalation rate, the most common issue category, category distribution, and priority distribution. Filters allow the queue to be narrowed by category, priority, and customer plan.
+
+### Ticket Triage and Recommendation
+
+![Ticket analysis and recommendation](docs/screenshots/ticket-analysis.png)
+
+A submitted support request is classified by category and priority, evaluated for human escalation, matched to a relevant help article, and compared against similar historical tickets. The result keeps the recommendation reviewable instead of automatically taking account-level action.
+
+### MFA / Duo Mobile Escalation Queue
+
+![Ticket queue showing Duo Mobile escalations](docs/screenshots/ticket-queue-duo.png)
+
+The ticket queue stores analyzed requests with their plan, category, priority, status, escalation decision, and creation time. MFA / Duo Mobile cases such as a lost phone, new-device enrollment, or a failed Duo push are marked high priority and routed for human review because they can require identity verification or account-specific authentication changes.
+
 ## Project structure
 
 ```text
@@ -45,6 +66,11 @@ ai-support-triage/
 ├── data/
 │   ├── tickets.csv
 │   └── knowledge_base.json
+├── docs/
+│   └── screenshots/
+│       ├── dashboard-overview.png
+│       ├── ticket-analysis.png
+│       └── ticket-queue-duo.png
 └── tests/
     ├── conftest.py
     ├── test_classifier.py
@@ -130,6 +156,7 @@ This project demonstrates:
 - retrieval of similar previously seen issues
 - self-service documentation matching
 - human-in-the-loop AI workflows
+- MFA / Duo Mobile escalation handling
 - support analytics and recurring issue identification
 - feedback collection for measuring recommendation quality
 
@@ -139,5 +166,4 @@ This project demonstrates:
 - weekly category trend comparisons
 - classification evaluation dataset and precision/recall metrics
 - CSV import/export
-- screenshot/GIF demo in this README
 - public deployment link
