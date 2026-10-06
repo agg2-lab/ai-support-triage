@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Export stuck or taking too long",
+    "category": "Export & Rendering",
+    "keywords": ["export", "render", "stuck", "99%", "processing"],
+    "resolution": "Retry the export, confirm the project loads correctly, and test another browser or session before escalating."
+  },
+  {
+    "title": "Unable to sign in",
+    "category": "Account & Login",
+    "keywords": ["login", "sign in", "password", "account access"],
+    "resolution": "Confirm the email address, retry sign-in, and use the password-reset flow if needed."
+  },
+  {
+    "title": "Subscription charge questions",
+    "category": "Billing",
+    "keywords": ["charged", "charge", "refund", "billing", "subscription"],
+    "resolution": "Confirm the subscription plan and transaction details, then route account-specific billing disputes to a human agent."
+  },
+  {
+    "title": "Slow or unresponsive workspace",
+    "category": "Performance",
+    "keywords": ["slow", "lag", "freezing", "performance"],
+    "resolution": "Refresh the session, close unused browser tabs, and test another supported browser before escalating persistent performance issues."
+  },
+  {
+    "title": "Reporting a product bug",
+    "category": "Bug Report",
+    "keywords": ["bug", "broken", "error", "crash", "not working"],
+    "resolution": "Collect reproduction steps, browser information, expected behavior, and any visible error message before escalation."
+  },
+  {
+    "title": "Account security concern",
+    "category": "Account Security",
+    "keywords": ["hacked", "unauthorized", "security", "stolen account"],
+    "resolution": "Escalate the ticket to a human immediately and avoid making account-specific changes through an automated flow."
+  }
+]
