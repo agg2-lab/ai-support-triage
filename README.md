@@ -33,19 +33,19 @@ The project models a realistic support workflow rather than a fully autonomous c
 
 ### Support Operations Dashboard
 
-![Support operations dashboard](docs/screenshots/dashboard-overview.png)
+![Support operations dashboard](./docs:screenshots/dashboard-overview.png)
 
 The dashboard provides a high-level view of support activity, including total and open ticket volume, escalation rate, the most common issue category, category distribution, and priority distribution. Filters allow the queue to be narrowed by category, priority, and customer plan.
 
 ### Ticket Triage and Recommendation
 
-![Ticket analysis and recommendation](docs/screenshots/ticket-analysis.png)
+![Ticket analysis and recommendation](./docs:screenshots/ticket-analysis.png)
 
 A submitted support request is classified by category and priority, evaluated for human escalation, matched to a relevant help article, and compared against similar historical tickets. The result keeps the recommendation reviewable instead of automatically taking account-level action.
 
 ### MFA / Duo Mobile Escalation Queue
 
-![Ticket queue showing Duo Mobile escalations](docs/screenshots/ticket-queue-duo.png)
+![Ticket queue showing Duo Mobile escalations](./docs:screenshots/ticket-queue-duo.png)
 
 The ticket queue stores analyzed requests with their plan, category, priority, status, escalation decision, and creation time. MFA / Duo Mobile cases such as a lost phone, new-device enrollment, or a failed Duo push are marked high priority and routed for human review because they can require identity verification or account-specific authentication changes.
 
@@ -66,11 +66,10 @@ ai-support-triage/
 ├── data/
 │   ├── tickets.csv
 │   └── knowledge_base.json
-├── docs/
-│   └── screenshots/
-│       ├── dashboard-overview.png
-│       ├── ticket-analysis.png
-│       └── ticket-queue-duo.png
+├── docs:screenshots/
+│   ├── dashboard-overview.png
+│   ├── ticket-analysis.png
+│   └── ticket-queue-duo.png
 └── tests/
     ├── conftest.py
     ├── test_classifier.py
